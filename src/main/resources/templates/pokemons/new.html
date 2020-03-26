@@ -11,40 +11,28 @@
 <div class="container">
     <h1>New Pokemon</h1>
     <form th:action="@{/pokemons}" th:method="post">
-        <div class="container">
-            <div class="form-group col-md-12 col-sm-12">
-                <label class="control-label" for="input-name"> 名前 </label>
-                <input class="form-control" type="text" name="name" id="input-name"/>
-            </div>
-            <div class="form-group col-md-12 col-sm-12">
-                <label class="control-label" for="input-nature"> 性格 </label>
-                <input class="form-control" type="text" name="nature" id="input-nature"/>
-            </div>
-            <div class="form-group col-md-3 col-sm-12">
-                <label class="control-label" for="input-skill[0]"> わざ1 </label>
-                <input class="form-control" type="text" name="skills" id="input-skill[0]"/>
-            </div>
-            <div class="form-group col-md-3 col-sm-12">
-                <label class="control-label" for="input-skill[1]"> わざ2 </label>
-                <input class="form-control" type="text" name="skills" id="input-skill[1]"/>
-            </div>
-            <div class="form-group col-md-3 col-sm-12">
-                <label class="control-label" for="input-skill[2]"> わざ3 </label>
-                <input class="form-control" type="text" name="skills" id="input-skill[2]"/>
-            </div>
-            <div class="form-group col-md-3 col-sm-12">
-                <label class="control-label" for="input-skill[3]"> わざ4 </label>
-                <input class="form-control" type="text" name="skills" id="input-skill[3]"/>
-            </div>
-            <div class="form-group col-md-12 col-sm-12">
-                <label class="control-label" for="input-ability"> 特性 </label>
-                <input class="form-control" type="text" name="ability" id="input-ability"/>
-            </div>
+        <div class="form-group col-md-12 col-sm-12">
+            <label class="control-label" for="input-name"> 名前 </label>
+            <input class="form-control" type="text" name="name" id="input-name"/>
         </div>
-        <button class="btn btn-default" type="submit">作成</button>
+        <div class="form-group col-md-12 col-sm-12">
+            <label class="control-label" for="input-nature"> 性格 </label>
+            <input class="form-control" type="text" name="nature" id="input-nature"/>
+        </div>
+        <th:block th:each="i:${#numbers.sequence(1,4)}">
+            <div class="form-group col-md-3 col-sm-12">
+                <label class="control-label" th:for="'input-skill'+${i}" th:text="'わざ'+${i}"></label>
+                <input class="form-control" type="text" name="skills" th:id="'input-skill'+${i}"/>
+            </div>
+        </th:block>
+        <div class="form-group col-md-12 col-sm-12">
+            <label class="control-label" for="input-ability"> 特性 </label>
+            <input class="form-control" type="text" name="ability" id="input-ability"/>
+        </div>
+        <button class="btn btn-default" type="submit"> 作成 </button>
     </form>
     <div class="pull-right">
-        <a class="btn btn-link" href="/pokemons">一覧画面へ</a>
+        <a class="btn btn-link" href="/pokemons"> 一覧画面へ </a>
     </div>
 </div>
 </body>

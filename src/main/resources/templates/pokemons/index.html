@@ -16,11 +16,10 @@
             <th>ID</th>
             <th>名前</th>
             <th>性格</th>
-            <th>わざ</th>
+            <th:block th:each="i:${#numbers.sequence(1, 4)}">
+                <th th:text="'わざ'+${i}"></th>
+            </th:block>
             <th>特性</th>
-            <th></th>
-            <th></th>
-            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -28,7 +27,6 @@
             <td th:text="*{id}"></td>
             <td th:text="*{name}"></td>
             <td th:text="*{nature}"></td>
-<!--            <td th:each="skill:${pokemon.skills}" th:object="${skill}" th:text="*"></td>-->
             <td th:each="skill:${pokemon.skills}" th:object="${skill}" th:text="*{toString()}"></td>
             <td th:text="*{ability}"></td>
             <td>

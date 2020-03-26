@@ -8,11 +8,11 @@ import javax.persistence.*
 data class Pokemon(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long?,
-        val name: String?,
-        val nature: Nature?,
+        var id: Long?,
+        var name: String?,
+        var nature: Nature?,
         @ElementCollection
-        val skills: MutableList<String>?,
-        val ability: String?
+        var skills: MutableList<String>?,
+        var ability: String?
 )
 
