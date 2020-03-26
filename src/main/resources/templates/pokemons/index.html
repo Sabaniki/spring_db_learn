@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemons</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <script th:src="@{/js/Jquery.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Listing Pokemons</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>名前</th>
+            <th>性格</th>
+            <th>わざ</th>
+            <th>特性</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pokemon:${pokemons}" th:object="${pokemon}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{name}"></td>
+            <td th:text="*{nature}"></td>
+            <td th:text="*{skill[0]}"></td>
+            <td th:text="*{ability}"></td>
+            <td>
+                <a class="btn btn-default btn-xs" th:href="@{/pokemons/{id}(id=*{id})}">参照</a>
+            </td>
+            <td>
+                <a class="btn btn-default btn-xs" th:href="@{/pokemons/{id}/edit(id=*{id})}">編集</a>
+            </td>
+            <td>
+                <form th:action="@{/pokemons/{id}(id=*{id})}" th:method="delete">
+                    <input class="btn btn-default btn-xs" type="submit" value="削除"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-default" href="/pokemons/new">新規作成</a>
+</div>
+</body>
+</html>
