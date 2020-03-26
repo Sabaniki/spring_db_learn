@@ -12,7 +12,7 @@ data class Pokemon(
         val name: String?,
         val nature: Nature?,
         @ElementCollection
-        val skill: MutableList<String>?,
+        val skills: MutableList<String>?,
         val ability: String?
 )
 

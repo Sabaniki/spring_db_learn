@@ -28,7 +28,8 @@
             <td th:text="*{id}"></td>
             <td th:text="*{name}"></td>
             <td th:text="*{nature}"></td>
-            <td th:text="*{skill[0]}"></td>
+<!--            <td th:each="skill:${pokemon.skills}" th:object="${skill}" th:text="*"></td>-->
+            <td th:each="skill:${pokemon.skills}" th:object="${skill}" th:text="*{toString()}"></td>
             <td th:text="*{ability}"></td>
             <td>
                 <a class="btn btn-default btn-xs" th:href="@{/pokemons/{id}(id=*{id})}">参照</a>
